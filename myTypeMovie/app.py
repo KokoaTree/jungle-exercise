@@ -12,8 +12,6 @@ db = client.dbjungle
 # ObjectId 타입으로 되어있는 _id 필드는 Flask 의 jsonify 호출시 문제가 된다.
 # 이를 처리하기 위해서 기본 JsonEncoder 가 아닌 custom encoder 를 사용한다.
 # Custom encoder 는 다른 부분은 모두 기본 encoder 에 동작을 위임하고 ObjectId 타입만 직접 처리한다.
-
-
 class CustomJSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
@@ -62,8 +60,6 @@ def show_movies():
     return jsonify({'result': 'success', 'movies_list': movies})
 
 # 영화에 좋아요 카운트 1 증가
-
-
 @app.route('/api/likes', methods=['POST'])
 def like_movie():
     # 클라이언트로부터 영화 제목을 받습니다.
@@ -89,8 +85,6 @@ def like_movie():
         return jsonify({'result': 'failure', 'msg': '업데이트 실패'}), 500
 
 # 클라이언트에게 받은 정보를 GET으로 처리
-
-
 @app.route('/api/list/trash', methods=['GET'])
 def get_trash_movies():
     sortType = request.args.get('sort_type', 'likes')
@@ -109,8 +103,6 @@ def get_trash_movies():
     return jsonify({'result': 'success', 'movies_list': movies})
 
 # 클라이언트에게 받은 정보를 POST으로 처리(휴지통으로 보내기)
-
-
 @app.route('/api/update/trash', methods=['POST'])
 def trash_movie():
     title = request.form['post_title']
@@ -123,8 +115,6 @@ def trash_movie():
         return jsonify({'result': 'failure', 'msg': '휴지통으로 보내기 실패'}), 500
 
 # 클라이언트에게 받은 정보를 POST으로 처리(휴지통에서 복구하기)
-
-
 @app.route('/api/update/restore', methods=['POST'])
 def restore_movie():
     title = request.form['post_title']

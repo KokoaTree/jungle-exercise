@@ -15,7 +15,7 @@ def insert_all():
     data = requests.get(
         'https://search.daum.net/search?w=tot&DA=TMZ&q=%EC%9D%BC%EA%B0%84%EC%98%81%ED%99%94%EC%88%9C%EC%9C%84', headers=headers)
 
-    # HTML을 BeautifulSoup이라는 라이브러리를 활용해 검색하기 용이한 상태로 만듦
+# HTML을 BeautifulSoup이라는 라이브러리를 활용해 검색하기 용이한 상태로 만듦
     # soup이라는 변수에 "파싱 용이해진 html"이 담긴 상태가 됨
     # 이제 코딩을 통해 필요한 부분을 추출하면 된다.
     soup = BeautifulSoup(data.text, 'html.parser')
