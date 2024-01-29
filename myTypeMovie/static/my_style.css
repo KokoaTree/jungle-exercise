@@ -1,0 +1,57 @@
+
+.center {
+  text-align: center; 
+}
+
+.sorter-box {
+  width: 550px;
+}
+
+.movie-list {
+  width: 550px;
+  margin: 20px auto 0 auto;
+}
+
+.movie-title {
+  display: inline-block;
+  font-size: 130%;
+  font-weight: bold;
+}
+
+.movie-title:hover {
+  text-decoration: underline;
+}
+
+.card {
+  margin-bottom: 15px;
+  padding: 12px;
+}
+
+.icon {
+  margin-left: 7px;
+}
+.movie-poster {
+  width: 100px;
+  margin: 30px;
+}
+.card-body {
+  padding: 30px;
+}
+#trash {
+  text-align: right;
+}
+#col1 {
+  text-align: center;
+  padding: 10px 0;
+  border-top: 2px solid #e2e2e2;
+}
+#col2 {
+  text-align: center;
+  padding: 10px 0;
+  border-top: 2px solid #e2e2e2;
+}
+.updown {
+  border: 1px solid black;
+  width: 0.1px;
+  height: 10px;
+}

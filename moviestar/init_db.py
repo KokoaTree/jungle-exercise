@@ -24,12 +24,12 @@ def insert_all():
     for movie in movies:
         # movie 안에 a 가 있으면,
         # (조건을 만족하는 첫 번째 요소, 없으면 None을 반환한다.)
-        tag_element = movie.select_one(':nth-child(10) > div.wrap_cont > div > a')
+        tag_element = movie.select_one(':nth-child(11) > div.wrap_cont > div > a')
         if not tag_element:
             continue
         title = tag_element.text  # a 태그 사이의 텍스트를 가져오기
 
-        tag_element = movie.select_one(':nth-child(10) > div.wrap_cont > dl:nth-child(3) > dd')
+        tag_element = movie.select_one(':nth-child(11) > div.wrap_cont > dl:nth-child(3) > dd')
         if not tag_element:
             continue
         open_date = tag_element.text
@@ -42,14 +42,14 @@ def insert_all():
         # open_year += 2000
 
         # 누적 관객수를 얻어낸다. "783,567명" 과 같은 형태가 된다.
-        tag_element = movie.select_one(':nth-child(10) > div.wrap_cont > dl:nth-child(4) > dd')
+        tag_element = movie.select_one(':nth-child(11) > div.wrap_cont > dl:nth-child(4) > dd')
         if not tag_element:
             continue
         viewers = tag_element.findChild(string=True, recursive=False)
         viewers = int(''.join([c for c in viewers if c.isdigit()]))
 
         # 영화 포스터 이미지 URL 을 추출한다.
-        tag_element = movie.select_one(':nth-child(10) > div.wrap_thumb > a > img')
+        tag_element = movie.select_one(':nth-child(11) > div.wrap_thumb > a > img')
         if not tag_element:
             continue
         poster_url = tag_element['src']
@@ -57,7 +57,7 @@ def insert_all():
             continue
 
         # 영화 정보 URL 을 추출한다.
-        tag_element = movie.select_one(':nth-child(10) > div.wrap_thumb > a')
+        tag_element = movie.select_one(':nth-child(11) > div.wrap_thumb > a')
         if not tag_element:
             continue
         info_url = tag_element['href']

@@ -1,18 +1,14 @@
 from bson import ObjectId
 from pymongo import MongoClient
-
 from flask import Flask, render_template, jsonify, request
 from flask.json.provider import JSONProvider
 
 import json
 import sys
 
-
 app = Flask(__name__)
-
 client = MongoClient('localhost', 27017)
 db = client.dbjungle
-
 
 #####################################################################################
 # 이 부분은 코드를 건드리지 말고 그냥 두세요. 코드를 이해하지 못해도 상관없는 부분입니다.
@@ -26,14 +22,12 @@ class CustomJSONEncoder(json.JSONEncoder):
             return str(o)
         return json.JSONEncoder.default(self, o)
 
-
 class CustomJSONProvider(JSONProvider):
     def dumps(self, obj, **kwargs):
         return json.dumps(obj, **kwargs, cls=CustomJSONEncoder)
 
     def loads(self, s, **kwargs):
         return json.loads(s, **kwargs)
-
 
 # 위에 정의되 custom encoder 를 사용하게끔 설정한다.
 app.json = CustomJSONProvider(app)
